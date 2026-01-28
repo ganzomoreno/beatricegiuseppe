@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        script: ['Great Vibes', 'cursive'],
+        script: ['Playfair Display', 'serif'],
         serif: ['Cormorant Garamond', 'serif'],
         body: ['Lora', 'serif'],
       },
