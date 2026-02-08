@@ -1,35 +1,74 @@
 
-# Cambiamento Font per i Nomi degli Sposi
+# Restyling Font e Nuova Hero Section
 
-## Obiettivo
-Sostituire il font "Great Vibes" (corsivo informale) con un font Serif elegante e raffinato per i nomi "Beatrice & Giuseppe" e altri elementi decorativi.
+## Panoramica
+Sostituire tutti i font attuali (Pinyon Script, Cormorant Garamond, Lora) con solo **Great Vibes** e **Cinzel**, e ridisegnare completamente la Hero Section per replicare lo stile dell'immagine di riferimento (save the date barocco).
 
-## Font Proposto
-**Playfair Display** - Un font serif sofisticato con:
-- Contrasto alto tra tratti spessi e sottili
-- Aspetto editoriale e lussuoso
-- Perfetto per titoli di matrimoni eleganti
-- Disponibile su Google Fonts
+## Font System
 
-## Modifiche da Effettuare
+| Ruolo | Font attuale | Nuovo font |
+|-------|-------------|------------|
+| Nomi sposi, hashtag, dettagli decorativi | Pinyon Script | **Great Vibes** (corsivo elegante) |
+| Titoli, label, testo uppercase, body | Cormorant Garamond + Lora | **Cinzel** (serif maiuscolo classico) |
 
-### 1. File: `src/index.css`
-- Aggiornare l'import di Google Fonts per includere Playfair Display
-- Modificare la variabile `--font-script` in `--font-display` con Playfair Display
-- Mantenere Great Vibes come opzione secondaria per piccoli dettagli decorativi
+- `font-script` = Great Vibes (per nomi, monogramma, parole singole decorative)
+- `font-serif` e `font-body` = Cinzel (per tutto il resto: titoli, sottotitoli, body, label, bottoni)
 
-### 2. File: `tailwind.config.ts`
-- Aggiornare la famiglia font `script` con Playfair Display
-- Aggiungere eventualmente una nuova classe `display` per maggiore flessibilità
+## Nuova Hero Section (ricalca l'immagine)
+La hero diventa un layout centrato su sfondo crema (senza foto di sfondo), con:
 
-### 3. Componenti da Aggiornare
-I seguenti file usano `font-script` per i nomi e dovranno beneficiare del cambio:
-- `HeroSection.tsx` - Nomi degli sposi e monogramma
-- `OurStorySection.tsx` - Titolo sezione e citazione
-- `Footer.tsx` - Monogramma e hashtag
-- `RSVPSection.tsx` - Titolo
-- `EventSection.tsx` - Titoli sezioni
-- `LocationSection.tsx` - Titoli
+1. **Cornice barocca** - Ornamenti angolari (asset gia presente) con opacita aumentata
+2. **Monogramma "BG"** in alto - Great Vibes, piccolo, centrato
+3. **Nomi "Beatrice & Giuseppe"** - Great Vibes, grande, colore primary
+4. **Sottotitolo** - Cinzel uppercase con tracking largo: "Ci sposeremo davanti al mare..."
+5. **"SAVE THE DATE"** - Cinzel bold, grande, uppercase, tracking largo
+6. **Data** - Mix: "DICIOTTO" (Cinzel uppercase) + "*luglio*" (Great Vibes corsivo) + "DUEMILAVENTISEI" (Cinzel uppercase)
+7. **Luogo** - "SANTA MARGHERITA LIGURE" in Cinzel uppercase tracking largo
+8. **Countdown** - Sotto, in Cinzel, numeri + label
+9. **CTA RSVP** - Bottone con bordo, Cinzel uppercase
 
-## Risultato Atteso
-I nomi "Beatrice & Giuseppe" appariranno in un font serif alto e raffinato, simile allo stile delle riviste di moda e degli inviti formali, invece del corsivo "handwritten" attuale.
+Niente immagine di sfondo, niente overlay scuro. Sfondo pulito color crema/ivory come nell'immagine.
+
+## File da modificare
+
+### 1. `src/index.css`
+- Cambiare import Google Fonts: solo Great Vibes + Cinzel (vari pesi)
+- Aggiornare le variabili CSS: `--font-script: 'Great Vibes'`, `--font-serif: 'Cinzel'`, `--font-body: 'Cinzel'`
+- Aggiornare le regole base h1/h2/h3 e body
+
+### 2. `tailwind.config.ts`
+- `script: ['Great Vibes', 'cursive']`
+- `serif: ['Cinzel', 'serif']`
+- `body: ['Cinzel', 'serif']`
+
+### 3. `src/components/wedding/HeroSection.tsx` (riscrittura completa)
+- Rimuovere immagine di sfondo e overlay
+- Sfondo crema pieno (bg-background)
+- Struttura verticale centrata che replica esattamente il layout dell'immagine
+- Monogramma BG in Great Vibes in alto
+- Nomi in Great Vibes grande
+- Sottotitolo in Cinzel uppercase
+- "SAVE THE DATE" in Cinzel bold grande
+- Data con mix Great Vibes/Cinzel
+- Location in Cinzel uppercase
+- Countdown e CTA RSVP sotto
+
+### 4. Tutti gli altri componenti
+I componenti (Navigation, EventSection, TimelineSection, RSVPSection, TravelSection, GiftSection, GallerySection, FAQSection, ContactsSection, Footer) usano gia le classi `font-script`, `font-serif`, `font-body` -- quindi il cambio font si propaghera automaticamente. Nessuna modifica strutturale necessaria.
+
+### 5. `src/components/wedding/Navigation.tsx`
+- Il logo "B & G" usa gia `font-script`, diventa automaticamente Great Vibes
+
+### 6. `src/components/wedding/Footer.tsx`
+- "B & G" e "#BeatriceEGiuseppe2026" usano gia `font-script`, cambio automatico
+
+## Dettagli tecnici
+
+```text
+Google Fonts import:
+Great Vibes (400)
+Cinzel (400, 500, 600, 700)
+Cinzel Decorative (opzionale, per SAVE THE DATE)
+```
+
+La Hero Section non usera piu `hero-santamargherita.jpg` come sfondo. L'immagine resta nel progetto per eventuale uso futuro (es. Gallery).
