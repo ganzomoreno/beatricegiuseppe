@@ -26,15 +26,15 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center bg-background overflow-hidden">
-      <div className="relative z-10 text-center px-8 max-w-2xl mx-auto flex flex-col items-center">
+    <section className="relative min-h-screen flex flex-col items-center justify-center bg-background overflow-hidden px-12 sm:px-16 md:px-8">
+      <div className="relative z-10 text-center max-w-2xl mx-auto flex flex-col items-center py-20">
         {/* Monogram */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
           style={{ fontFamily: "'Great Vibes', cursive" }}
-          className="text-3xl md:text-4xl text-primary mb-6"
+          className="text-2xl sm:text-3xl md:text-4xl text-primary mb-4 md:mb-6"
         >
           B &amp; G
         </motion.p>
@@ -44,7 +44,7 @@ const HeroSection = () => {
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="w-24 h-px bg-primary/30 mb-8"
+          className="w-16 md:w-24 h-px bg-primary/30 mb-6 md:mb-8"
         />
 
         {/* Names */}
@@ -53,9 +53,13 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
           style={{ fontFamily: "'Great Vibes', cursive" }}
-          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-primary mb-6 leading-tight"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-primary mb-4 md:mb-6 leading-tight"
         >
-          Beatrice &amp; Giuseppe
+          Beatrice
+          <br className="sm:hidden" />
+          <span className="sm:inline"> &amp; </span>
+          <br className="sm:hidden" />
+          Giuseppe
         </motion.h1>
 
         {/* Subtitle */}
@@ -63,11 +67,13 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="font-serif text-xs md:text-sm tracking-[0.35em] uppercase text-foreground/60 max-w-sm mx-auto mb-10 leading-relaxed"
+          className="font-serif text-[10px] sm:text-xs md:text-sm tracking-[0.2em] sm:tracking-[0.35em] uppercase text-foreground/60 max-w-xs sm:max-w-sm mx-auto mb-8 md:mb-10 leading-relaxed"
         >
-          Ci sposeremo davanti al mare, circondati
+          Ci sposeremo davanti al mare,
           <br />
-          dalle nostre famiglie e dagli amici più cari.
+          circondati dalle nostre famiglie
+          <br />
+          e dagli amici più cari.
           <br />
           Vi andrà di essere con noi?
         </motion.p>
@@ -77,7 +83,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="font-serif text-2xl md:text-3xl lg:text-4xl tracking-[0.4em] uppercase text-primary font-bold mb-8"
+          className="font-serif text-lg sm:text-xl md:text-3xl lg:text-4xl tracking-[0.25em] sm:tracking-[0.4em] uppercase text-primary font-bold mb-6 md:mb-8"
         >
           Save the Date
         </motion.h2>
@@ -87,18 +93,18 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
-          className="flex items-baseline justify-center gap-3 md:gap-4 mb-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 md:gap-4 mb-3 md:mb-4"
         >
-          <span className="font-serif text-lg md:text-xl tracking-[0.3em] uppercase text-primary">
+          <span className="font-serif text-sm sm:text-lg md:text-xl tracking-[0.2em] sm:tracking-[0.3em] uppercase text-primary">
             Diciotto
           </span>
           <span
             style={{ fontFamily: "'Great Vibes', cursive" }}
-            className="text-3xl md:text-4xl text-primary"
+            className="text-2xl sm:text-3xl md:text-4xl text-primary"
           >
             luglio
           </span>
-          <span className="font-serif text-lg md:text-xl tracking-[0.3em] uppercase text-primary">
+          <span className="font-serif text-sm sm:text-lg md:text-xl tracking-[0.2em] sm:tracking-[0.3em] uppercase text-primary">
             Duemilaventisei
           </span>
         </motion.div>
@@ -108,7 +114,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.3 }}
-          className="font-serif text-xs md:text-sm tracking-[0.3em] uppercase text-foreground/50 mb-12"
+          className="font-serif text-[10px] sm:text-xs md:text-sm tracking-[0.2em] sm:tracking-[0.3em] uppercase text-foreground/50 mb-8 md:mb-12"
         >
           Santa Margherita Ligure
         </motion.p>
@@ -118,7 +124,7 @@ const HeroSection = () => {
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.6, delay: 1.4 }}
-          className="w-16 h-px bg-primary/25 mb-10"
+          className="w-12 md:w-16 h-px bg-primary/25 mb-8 md:mb-10"
         />
 
         {/* Countdown */}
@@ -126,7 +132,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.5 }}
-          className="flex justify-center gap-8 md:gap-12 mb-12"
+          className="flex justify-center gap-6 sm:gap-8 md:gap-12 mb-8 md:mb-12"
         >
           {[
             { value: countdown.days, label: "Giorni" },
@@ -135,10 +141,10 @@ const HeroSection = () => {
             { value: countdown.seconds, label: "Sec" },
           ].map((item) => (
             <div key={item.label} className="text-center">
-              <span className="font-serif text-2xl md:text-3xl text-primary block">
+              <span className="font-serif text-xl sm:text-2xl md:text-3xl text-primary block">
                 {item.value}
               </span>
-              <span className="font-serif text-[10px] tracking-[0.25em] uppercase text-foreground/40">
+              <span className="font-serif text-[8px] sm:text-[10px] tracking-[0.2em] uppercase text-foreground/40">
                 {item.label}
               </span>
             </div>
@@ -151,7 +157,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.7 }}
           onClick={scrollToRSVP}
-          className="font-serif text-xs tracking-[0.3em] uppercase px-10 py-4 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+          className="font-serif text-[10px] sm:text-xs tracking-[0.25em] sm:tracking-[0.3em] uppercase px-8 sm:px-10 py-3 sm:py-4 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
         >
           RSVP
         </motion.button>
@@ -162,14 +168,14 @@ const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-5 h-8 border border-primary/25 rounded-full flex justify-center pt-1.5"
+          className="w-4 h-7 border border-primary/25 rounded-full flex justify-center pt-1"
         >
-          <div className="w-1 h-2.5 bg-primary/30 rounded-full" />
+          <div className="w-0.5 h-2 bg-primary/30 rounded-full" />
         </motion.div>
       </motion.div>
     </section>
