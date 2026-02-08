@@ -42,7 +42,8 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="font-script text-3xl md:text-4xl text-primary mb-6"
+          style={{ fontFamily: "'Great Vibes', cursive" }}
+          className="text-3xl md:text-4xl text-primary mb-6"
         >
           B &amp; G
         </motion.p>
@@ -55,17 +56,18 @@ const HeroSection = () => {
           className="w-24 h-px bg-primary/30 mb-8"
         />
 
-        {/* Names */}
+        {/* Names - Great Vibes via inline style to bypass h1 Cinzel rule */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="font-script text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-primary mb-6 leading-tight"
+          style={{ fontFamily: "'Great Vibes', cursive" }}
+          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-primary mb-6 leading-tight"
         >
           Beatrice &amp; Giuseppe
         </motion.h1>
 
-        {/* Subtitle */}
+        {/* Subtitle - Cinzel uppercase */}
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -79,7 +81,7 @@ const HeroSection = () => {
           Vi andrà di essere con noi?
         </motion.p>
 
-        {/* SAVE THE DATE */}
+        {/* SAVE THE DATE - Cinzel bold */}
         <motion.h2
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -99,7 +101,10 @@ const HeroSection = () => {
           <span className="font-serif text-lg md:text-xl tracking-[0.3em] uppercase text-primary">
             Diciotto
           </span>
-          <span className="font-script text-3xl md:text-4xl text-primary">
+          <span
+            style={{ fontFamily: "'Great Vibes', cursive" }}
+            className="text-3xl md:text-4xl text-primary"
+          >
             luglio
           </span>
           <span className="font-serif text-lg md:text-xl tracking-[0.3em] uppercase text-primary">
