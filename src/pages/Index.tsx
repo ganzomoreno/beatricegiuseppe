@@ -1,5 +1,6 @@
 import Navigation from "@/components/wedding/Navigation";
 import HeroSection from "@/components/wedding/HeroSection";
+import SiteFrame from "@/components/wedding/SiteFrame";
 import EventSection from "@/components/wedding/EventSection";
 import TimelineSection from "@/components/wedding/TimelineSection";
 import RSVPSection from "@/components/wedding/RSVPSection";
@@ -13,6 +14,7 @@ import Footer from "@/components/wedding/Footer";
 const Index = () => {
   return (
     <main id="home" className="min-h-screen">
+      <SiteFrame />
       <Navigation />
       <HeroSection />
       <EventSection />
