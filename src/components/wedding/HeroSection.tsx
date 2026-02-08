@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import heroFrame from "@/assets/hero-frame.png";
 
 const HeroSection = () => {
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -28,23 +27,43 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center bg-background overflow-hidden">
-      {/* Hero frame image as background decoration */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <img
-          src={heroFrame}
-          alt=""
-          className="w-full h-full object-contain opacity-90 max-w-4xl max-h-[90vh]"
-        />
-      </div>
+      <div className="relative z-10 text-center px-8 max-w-2xl mx-auto flex flex-col items-center">
+        {/* Monogram */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          style={{ fontFamily: "'Great Vibes', cursive" }}
+          className="text-3xl md:text-4xl text-primary mb-6"
+        >
+          B &amp; G
+        </motion.p>
 
-      {/* Content overlay - positioned on top of the frame */}
-      <div className="relative z-10 text-center px-8 max-w-2xl mx-auto flex flex-col items-center pt-32 pb-16">
-        {/* Subtitle - Cinzel uppercase */}
+        {/* Thin line */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="w-24 h-px bg-primary/30 mb-8"
+        />
+
+        {/* Names */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          style={{ fontFamily: "'Great Vibes', cursive" }}
+          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-primary mb-6 leading-tight"
+        >
+          Beatrice &amp; Giuseppe
+        </motion.h1>
+
+        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="font-serif text-xs md:text-sm tracking-[0.35em] uppercase text-foreground/60 max-w-sm mx-auto mb-8 leading-relaxed"
+          className="font-serif text-xs md:text-sm tracking-[0.35em] uppercase text-foreground/60 max-w-sm mx-auto mb-10 leading-relaxed"
         >
           Ci sposeremo davanti al mare, circondati
           <br />
@@ -63,7 +82,7 @@ const HeroSection = () => {
           Save the Date
         </motion.h2>
 
-        {/* Date - mixed typography */}
+        {/* Date */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
