@@ -12,45 +12,37 @@ const Footer = () => {
           transition={{ duration: 0.8 }}
           className="space-y-6"
         >
-          {/* Monogram */}
-          <h3 className="font-script text-4xl text-gold-light">
+          <h3 className="font-script text-4xl text-secondary">
             B & G
           </h3>
 
-          {/* Date */}
-          <p className="font-serif text-sm tracking-[0.3em] uppercase opacity-80">
+          <p className="font-serif text-xs tracking-[0.3em] uppercase opacity-70">
             18 Luglio 2026 • Santa Margherita Ligure
           </p>
 
-          {/* Divider */}
           <div className="flex items-center justify-center gap-4">
-            <div className="w-16 h-px bg-primary-foreground/30" />
-            <Heart className="w-4 h-4 text-gold" />
-            <div className="w-16 h-px bg-primary-foreground/30" />
+            <div className="w-16 h-px bg-primary-foreground/20" />
+            <Heart className="w-4 h-4 text-secondary" />
+            <div className="w-16 h-px bg-primary-foreground/20" />
           </div>
 
-          {/* Hashtag */}
-          <p className="font-script text-xl text-gold-light">
+          <p className="font-script text-xl text-secondary">
             #BeatriceEGiuseppe2026
           </p>
 
-          {/* Contact */}
-          <div className="pt-6 border-t border-primary-foreground/20">
-            <p className="font-body text-sm opacity-70">
-              Per qualsiasi informazione, contattateci a
+          <div className="pt-6 border-t border-primary-foreground/15 space-y-4">
+            <p className="font-body text-xs opacity-50">
+              © 2026 Beatrice & Giuseppe — Con amore
             </p>
-            <a 
-              href="mailto:beatrice.giuseppe.2026@email.com" 
-              className="font-serif text-gold-light hover:text-gold transition-colors"
-            >
-              beatrice.giuseppe.2026@email.com
-            </a>
+            <div className="flex justify-center gap-6">
+              <a href="#" className="font-serif text-xs tracking-widest uppercase opacity-50 hover:opacity-80 transition-opacity">
+                Privacy
+              </a>
+              <a href="#" className="font-serif text-xs tracking-widest uppercase opacity-50 hover:opacity-80 transition-opacity">
+                Cookie
+              </a>
+            </div>
           </div>
-
-          {/* Copyright */}
-          <p className="font-body text-xs opacity-50 pt-6">
-            Con amore, Beatrice & Giuseppe
-          </p>
         </motion.div>
       </div>
     </footer>

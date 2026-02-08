@@ -14,7 +14,8 @@ const RSVPSection = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    guests: "",
+    phone: "",
+    attending: "",
     dietary: "",
     message: "",
   });
@@ -23,39 +24,37 @@ const RSVPSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1000));
     
     toast({
       title: "Grazie per la conferma!",
-      description: "Vi aspettiamo con gioia il 18 luglio.",
+      description: formData.attending === "si" 
+        ? "Vi aspettiamo con gioia il 18 luglio." 
+        : "Ci mancherete! Grazie per averci fatto sapere.",
     });
     
-    setFormData({ name: "", email: "", guests: "", dietary: "", message: "" });
+    setFormData({ name: "", email: "", phone: "", attending: "", dietary: "", message: "" });
     setIsSubmitting(false);
   };
 
   return (
     <section id="rsvp" className="wedding-section" ref={ref}>
       <div className="wedding-container max-w-2xl">
-        {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="font-script text-4xl md:text-5xl text-primary mb-4">
-            Conferma la tua Presenza
+          <h2 className="font-script text-5xl md:text-6xl text-primary mb-4">
+            RSVP
           </h2>
-          <div className="w-24 h-px bg-gold mx-auto mb-6" />
-          <p className="font-body text-foreground/80 text-lg">
-            Vi preghiamo di confermare la vostra partecipazione entro il 
-            <span className="font-semibold text-primary"> 1 giugno 2026</span>
+          <div className="w-24 h-px bg-primary/30 mx-auto mb-6" />
+          <p className="font-serif text-sm tracking-[0.2em] uppercase text-foreground/70">
+            Confermate entro il <span className="text-primary font-semibold">1 giugno 2026</span>
           </p>
         </motion.div>
 
-        {/* RSVP Form */}
         <motion.form
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -65,20 +64,20 @@ const RSVPSection = () => {
         >
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label className="font-serif text-sm tracking-widest uppercase text-primary">
+              <label className="font-serif text-xs tracking-[0.2em] uppercase text-primary">
                 Nome e Cognome *
               </label>
               <Input
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="bg-secondary/50 border-border focus:border-gold focus:ring-gold/20"
+                className="bg-background border-border focus:border-primary focus:ring-primary/20"
                 placeholder="Il tuo nome"
               />
             </div>
             
             <div className="space-y-2">
-              <label className="font-serif text-sm tracking-widest uppercase text-primary">
+              <label className="font-serif text-xs tracking-[0.2em] uppercase text-primary">
                 Email *
               </label>
               <Input
@@ -86,47 +85,63 @@ const RSVPSection = () => {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="bg-secondary/50 border-border focus:border-gold focus:ring-gold/20"
+                className="bg-background border-border focus:border-primary focus:ring-primary/20"
                 placeholder="la.tua@email.com"
               />
             </div>
           </div>
 
-          <div className="space-y-2">
-            <label className="font-serif text-sm tracking-widest uppercase text-primary">
-              Numero di Ospiti
-            </label>
-            <Input
-              type="number"
-              min="1"
-              max="10"
-              value={formData.guests}
-              onChange={(e) => setFormData({ ...formData, guests: e.target.value })}
-              className="bg-secondary/50 border-border focus:border-gold focus:ring-gold/20"
-              placeholder="Incluso te stesso/a"
-            />
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <label className="font-serif text-xs tracking-[0.2em] uppercase text-primary">
+                Telefono
+              </label>
+              <Input
+                type="tel"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                className="bg-background border-border focus:border-primary focus:ring-primary/20"
+                placeholder="+39 ..."
+              />
+            </div>
+
+            <div className="space-y-2">
+              <label className="font-serif text-xs tracking-[0.2em] uppercase text-primary">
+                Parteciperai? *
+              </label>
+              <select
+                required
+                value={formData.attending}
+                onChange={(e) => setFormData({ ...formData, attending: e.target.value })}
+                className="flex h-10 w-full rounded-md border border-border bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 font-body"
+              >
+                <option value="">Seleziona...</option>
+                <option value="si">Parteciperò con gioia</option>
+                <option value="no">Non potrò esserci</option>
+              </select>
+            </div>
           </div>
 
           <div className="space-y-2">
-            <label className="font-serif text-sm tracking-widest uppercase text-primary">
+            <label className="font-serif text-xs tracking-[0.2em] uppercase text-primary">
               Allergie o Intolleranze Alimentari
             </label>
             <Input
               value={formData.dietary}
               onChange={(e) => setFormData({ ...formData, dietary: e.target.value })}
-              className="bg-secondary/50 border-border focus:border-gold focus:ring-gold/20"
+              className="bg-background border-border focus:border-primary focus:ring-primary/20"
               placeholder="Es: vegetariano, senza glutine..."
             />
           </div>
 
           <div className="space-y-2">
-            <label className="font-serif text-sm tracking-widest uppercase text-primary">
+            <label className="font-serif text-xs tracking-[0.2em] uppercase text-primary">
               Un Messaggio per gli Sposi
             </label>
             <Textarea
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="bg-secondary/50 border-border focus:border-gold focus:ring-gold/20 min-h-[120px] resize-none"
+              className="bg-background border-border focus:border-primary focus:ring-primary/20 min-h-[100px] resize-none"
               placeholder="Scrivi un augurio o un pensiero..."
             />
           </div>
@@ -134,7 +149,7 @@ const RSVPSection = () => {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-serif tracking-widest uppercase py-6 transition-all duration-300 hover:shadow-lg"
+            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-serif text-xs tracking-[0.3em] uppercase py-6 transition-all duration-300"
           >
             {isSubmitting ? (
               <span className="flex items-center gap-2">
