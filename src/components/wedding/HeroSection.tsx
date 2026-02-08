@@ -1,25 +1,10 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+
 
 const HeroSection = () => {
-  const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
-  useEffect(() => {
-    const weddingDate = new Date("2026-07-18T16:00:00");
-    const timer = setInterval(() => {
-      const now = new Date();
-      const diff = weddingDate.getTime() - now.getTime();
-      if (diff > 0) {
-        setCountdown({
-          days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((diff / (1000 * 60)) % 60),
-          seconds: Math.floor((diff / 1000) % 60),
-        });
-      }
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
+
+
 
   const scrollToRSVP = () => {
     document.querySelector("#rsvp")?.scrollIntoView({ behavior: "smooth" });
@@ -127,29 +112,7 @@ const HeroSection = () => {
           className="w-12 md:w-16 h-px bg-primary/25 mb-8 md:mb-10"
         />
 
-        {/* Countdown */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
-          className="flex justify-center gap-6 sm:gap-8 md:gap-12 mb-8 md:mb-12"
-        >
-          {[
-            { value: countdown.days, label: "Giorni" },
-            { value: countdown.hours, label: "Ore" },
-            { value: countdown.minutes, label: "Min" },
-            { value: countdown.seconds, label: "Sec" },
-          ].map((item) => (
-            <div key={item.label} className="text-center">
-              <span className="font-serif text-xl sm:text-2xl md:text-3xl text-primary block">
-                {item.value}
-              </span>
-              <span className="font-serif text-[8px] sm:text-[10px] tracking-[0.2em] uppercase text-foreground/40">
-                {item.label}
-              </span>
-            </div>
-          ))}
-        </motion.div>
+
 
         {/* CTA */}
         <motion.button
