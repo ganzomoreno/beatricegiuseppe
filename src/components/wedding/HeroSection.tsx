@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import ornamentFrame from "@/assets/corner-ornament.png";
+import heroFrame from "@/assets/hero-frame.png";
 
 const HeroSection = () => {
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -27,52 +27,24 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-background overflow-hidden">
-      {/* Baroque corner ornaments */}
-      <div className="absolute inset-6 md:inset-12 lg:inset-20 pointer-events-none">
-        <img src={ornamentFrame} alt="" className="absolute top-0 left-0 w-28 md:w-36 lg:w-44 opacity-60" />
-        <img src={ornamentFrame} alt="" className="absolute top-0 right-0 w-28 md:w-36 lg:w-44 opacity-60 -scale-x-100" />
-        <img src={ornamentFrame} alt="" className="absolute bottom-0 left-0 w-28 md:w-36 lg:w-44 opacity-60 -scale-y-100" />
-        <img src={ornamentFrame} alt="" className="absolute bottom-0 right-0 w-28 md:w-36 lg:w-44 opacity-60 scale-x-[-1] scale-y-[-1]" />
+    <section className="relative min-h-screen flex flex-col items-center justify-center bg-background overflow-hidden">
+      {/* Hero frame image as background decoration */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <img
+          src={heroFrame}
+          alt=""
+          className="w-full h-full object-contain opacity-90 max-w-4xl max-h-[90vh]"
+        />
       </div>
 
-      <div className="relative z-10 text-center px-4 max-w-3xl mx-auto flex flex-col items-center gap-0">
-        {/* Monogram */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          style={{ fontFamily: "'Great Vibes', cursive" }}
-          className="text-3xl md:text-4xl text-primary mb-6"
-        >
-          B &amp; G
-        </motion.p>
-
-        {/* Thin line */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="w-24 h-px bg-primary/30 mb-8"
-        />
-
-        {/* Names - Great Vibes via inline style to bypass h1 Cinzel rule */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          style={{ fontFamily: "'Great Vibes', cursive" }}
-          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-primary mb-6 leading-tight"
-        >
-          Beatrice &amp; Giuseppe
-        </motion.h1>
-
+      {/* Content overlay - positioned on top of the frame */}
+      <div className="relative z-10 text-center px-8 max-w-2xl mx-auto flex flex-col items-center pt-32 pb-16">
         {/* Subtitle - Cinzel uppercase */}
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="font-serif text-xs md:text-sm tracking-[0.35em] uppercase text-foreground/60 max-w-md mx-auto mb-10 leading-relaxed"
+          className="font-serif text-xs md:text-sm tracking-[0.35em] uppercase text-foreground/60 max-w-sm mx-auto mb-8 leading-relaxed"
         >
           Ci sposeremo davanti al mare, circondati
           <br />
@@ -81,7 +53,7 @@ const HeroSection = () => {
           Vi andrà di essere con noi?
         </motion.p>
 
-        {/* SAVE THE DATE - Cinzel bold */}
+        {/* SAVE THE DATE */}
         <motion.h2
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
