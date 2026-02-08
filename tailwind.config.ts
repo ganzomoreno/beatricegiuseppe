@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        script: ['Playfair Display', 'serif'],
+        script: ['Pinyon Script', 'cursive'],
         serif: ['Cormorant Garamond', 'serif'],
         body: ['Lora', 'serif'],
       },
@@ -52,16 +52,18 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        cream: "hsl(40 33% 96%)",
-        ivory: "hsl(40 40% 98%)",
-        sepia: {
-          DEFAULT: "hsl(25 35% 35%)",
-          light: "hsl(25 25% 50%)",
+        shell: {
+          DEFAULT: "hsl(20 26% 83%)",
+          light: "hsl(20 26% 90%)",
         },
-        gold: {
-          DEFAULT: "hsl(38 60% 55%)",
-          light: "hsl(38 50% 70%)",
-        },
+        mocha: "hsl(17 26% 52%)",
+        sirocco: "hsl(18 29% 65%)",
+        "golden-eagle": "hsl(17 14% 68%)",
+        "coconut-cream": "hsl(14 29% 90%)",
+        "bridal-blush": "hsl(18 28% 90%)",
+        gardenia: "hsl(33 35% 91%)",
+        cream: "hsl(30 25% 96%)",
+        ivory: "hsl(33 30% 97%)",
       },
       borderRadius: {
         lg: "var(--radius)",
