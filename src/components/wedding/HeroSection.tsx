@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import heroImage from "@/assets/hero-santamargherita.jpg";
 import ornamentFrame from "@/assets/corner-ornament.png";
 
 const HeroSection = () => {
@@ -28,46 +27,50 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      />
-      <div className="absolute inset-0 hero-overlay" />
-      
-      {/* Decorative Frame */}
-      <div className="absolute inset-4 md:inset-8 lg:inset-16 pointer-events-none">
-        <img src={ornamentFrame} alt="" className="absolute top-0 left-0 w-24 md:w-32 lg:w-40 opacity-40" />
-        <img src={ornamentFrame} alt="" className="absolute top-0 right-0 w-24 md:w-32 lg:w-40 opacity-40 -scale-x-100" />
-        <img src={ornamentFrame} alt="" className="absolute bottom-0 left-0 w-24 md:w-32 lg:w-40 opacity-40 -scale-y-100" />
-        <img src={ornamentFrame} alt="" className="absolute bottom-0 right-0 w-24 md:w-32 lg:w-40 opacity-40 scale-x-[-1] scale-y-[-1]" />
+    <section className="relative min-h-screen flex items-center justify-center bg-background overflow-hidden">
+      {/* Baroque corner ornaments */}
+      <div className="absolute inset-6 md:inset-12 lg:inset-20 pointer-events-none">
+        <img src={ornamentFrame} alt="" className="absolute top-0 left-0 w-28 md:w-36 lg:w-44 opacity-60" />
+        <img src={ornamentFrame} alt="" className="absolute top-0 right-0 w-28 md:w-36 lg:w-44 opacity-60 -scale-x-100" />
+        <img src={ornamentFrame} alt="" className="absolute bottom-0 left-0 w-28 md:w-36 lg:w-44 opacity-60 -scale-y-100" />
+        <img src={ornamentFrame} alt="" className="absolute bottom-0 right-0 w-28 md:w-36 lg:w-44 opacity-60 scale-x-[-1] scale-y-[-1]" />
       </div>
 
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        {/* Names - Calligraphic Script */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="font-script text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-primary mb-6"
+      <div className="relative z-10 text-center px-4 max-w-3xl mx-auto flex flex-col items-center gap-0">
+        {/* Monogram */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="font-script text-3xl md:text-4xl text-primary mb-6"
         >
-          Beatrice & Giuseppe
-        </motion.h1>
+          B &amp; G
+        </motion.p>
 
-        {/* Divider */}
+        {/* Thin line */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="w-32 h-px bg-primary/40 mx-auto mb-8"
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="w-24 h-px bg-primary/30 mb-8"
         />
 
-        {/* Subtitle - Uppercase Serif */}
-        <motion.p
+        {/* Names */}
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="font-script text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-primary mb-6 leading-tight"
+        >
+          Beatrice &amp; Giuseppe
+        </motion.h1>
+
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="font-serif text-sm md:text-base tracking-[0.35em] uppercase text-foreground/70 max-w-xl mx-auto mb-10 leading-relaxed"
+          className="font-serif text-xs md:text-sm tracking-[0.35em] uppercase text-foreground/60 max-w-md mx-auto mb-10 leading-relaxed"
         >
           Ci sposeremo davanti al mare, circondati
           <br />
@@ -76,27 +79,58 @@ const HeroSection = () => {
           Vi andrà di essere con noi?
         </motion.p>
 
-        {/* Date */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+        {/* SAVE THE DATE */}
+        <motion.h2
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="space-y-3 mb-10"
+          className="font-serif text-2xl md:text-3xl lg:text-4xl tracking-[0.4em] uppercase text-primary font-bold mb-8"
         >
-          <p className="font-serif text-lg md:text-xl tracking-[0.3em] uppercase text-primary">
-            18 Luglio 2026
-          </p>
-          <p className="font-serif text-sm tracking-[0.25em] uppercase text-foreground/60">
-            Santa Margherita Ligure
-          </p>
+          Save the Date
+        </motion.h2>
+
+        {/* Date - mixed typography */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className="flex items-baseline justify-center gap-3 md:gap-4 mb-4"
+        >
+          <span className="font-serif text-lg md:text-xl tracking-[0.3em] uppercase text-primary">
+            Diciotto
+          </span>
+          <span className="font-script text-3xl md:text-4xl text-primary">
+            luglio
+          </span>
+          <span className="font-serif text-lg md:text-xl tracking-[0.3em] uppercase text-primary">
+            Duemilaventisei
+          </span>
         </motion.div>
+
+        {/* Location */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.3 }}
+          className="font-serif text-xs md:text-sm tracking-[0.3em] uppercase text-foreground/50 mb-12"
+        >
+          Santa Margherita Ligure
+        </motion.p>
+
+        {/* Thin line */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.6, delay: 1.4 }}
+          className="w-16 h-px bg-primary/25 mb-10"
+        />
 
         {/* Countdown */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="flex justify-center gap-6 md:gap-10 mb-12"
+          transition={{ duration: 0.8, delay: 1.5 }}
+          className="flex justify-center gap-8 md:gap-12 mb-12"
         >
           {[
             { value: countdown.days, label: "Giorni" },
@@ -105,39 +139,43 @@ const HeroSection = () => {
             { value: countdown.seconds, label: "Sec" },
           ].map((item) => (
             <div key={item.label} className="text-center">
-              <span className="font-serif text-3xl md:text-4xl text-primary block">{item.value}</span>
-              <span className="font-serif text-xs tracking-[0.2em] uppercase text-foreground/50">{item.label}</span>
+              <span className="font-serif text-2xl md:text-3xl text-primary block">
+                {item.value}
+              </span>
+              <span className="font-serif text-[10px] tracking-[0.25em] uppercase text-foreground/40">
+                {item.label}
+              </span>
             </div>
           ))}
         </motion.div>
 
         {/* CTA */}
         <motion.button
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.4 }}
+          transition={{ duration: 0.8, delay: 1.7 }}
           onClick={scrollToRSVP}
-          className="font-serif text-sm tracking-[0.3em] uppercase px-10 py-4 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+          className="font-serif text-xs tracking-[0.3em] uppercase px-10 py-4 border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
         >
           RSVP
         </motion.button>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.8 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-primary/30 rounded-full flex justify-center pt-2"
-          >
-            <div className="w-1.5 h-3 bg-primary/40 rounded-full" />
-          </motion.div>
-        </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+          className="w-5 h-8 border border-primary/25 rounded-full flex justify-center pt-1.5"
+        >
+          <div className="w-1 h-2.5 bg-primary/30 rounded-full" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
