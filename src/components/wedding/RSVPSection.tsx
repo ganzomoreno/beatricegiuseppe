@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/lib/supabase";
 
 const RSVPSection = () => {
   const ref = useRef(null);
@@ -23,18 +24,41 @@ const RSVPSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Grazie per la conferma!",
-      description: formData.attending === "si" 
-        ? "Vi aspettiamo con gioia il 18 luglio." 
-        : "Ci mancherete! Grazie per averci fatto sapere.",
-    });
-    
-    setFormData({ name: "", email: "", phone: "", attending: "", dietary: "", message: "" });
-    setIsSubmitting(false);
+
+    try {
+      const { error } = await supabase
+        .from('rsvp')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            attending: formData.attending,
+            dietary: formData.dietary,
+            message: formData.message
+          }
+        ]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Grazie per la conferma!",
+        description: formData.attending === "si"
+          ? "Vi aspettiamo con gioia il 18 luglio."
+          : "Ci mancherete! Grazie per averci fatto sapere.",
+      });
+
+      setFormData({ name: "", email: "", phone: "", attending: "", dietary: "", message: "" });
+    } catch (error) {
+      console.error('Error submitting RSVP:', error);
+      toast({
+        title: "Errore",
+        description: "Qualcosa è andato storto. Riprova più tardi.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -75,7 +99,7 @@ const RSVPSection = () => {
                 placeholder="Il tuo nome"
               />
             </div>
-            
+
             <div className="space-y-2">
               <label className="font-serif text-xs tracking-[0.2em] uppercase text-primary">
                 Email *
