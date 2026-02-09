@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <style>
+    .text {
+      font-family: Didot, "Bodoni MT", "Times New Roman", serif;
+      font-weight: bold;
+      font-style: italic;
+      fill: #C5A086; /* Copper/Rose Gold color from the site theme */
+    }
+  </style>
+  <rect width="100" height="100" fill="transparent"/>
+  <text x="50" y="65" font-size="50" text-anchor="middle" class="text">B&amp;G</text>
+</svg>
